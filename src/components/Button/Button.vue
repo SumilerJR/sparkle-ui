@@ -13,8 +13,13 @@
         'is-plain': plain,
         'is-round': round,
         'is-circle': circle,
-        'is-disabled': disabled
-    }" :disabled="disabled" :autofocus="autofocus" :type="nativeType">
+        'is-disabled': disabled,
+        'is-loading': loading,
+    }" :disabled="disabled || loading" :autofocus="autofocus" :type="nativeType">
+        <!-- 加载图标 -->
+        <Icon icon="spinner" spin v-if="loading" />
+        <!-- 自定义图标 -->
+        <Icon :icon="icon" v-if="icon" />
         <!-- html的button标签中原生有disabled、autofocus、type属性 -->
         <span>
             <!-- 插槽 -->
@@ -34,6 +39,9 @@ export default defineComponent({
 <script setup lang="ts" >
 import { ref } from "vue";
 import type { ButtonProps } from "./types"
+import Icon from "../Icon/Icon.vue";
+
+
 defineOptions({
     name: "SmButton"
 })

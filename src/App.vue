@@ -2,7 +2,7 @@
  * @Author: 九日 mail@sumiler.com
  * @Date: 2024-01-29 16:35:27
  * @LastEditors: 九日 mail@sumiler.com
- * @LastEditTime: 2024-01-31 11:30:06
+ * @LastEditTime: 2024-01-31 15:58:14
  * @FilePath: \v-element\src\App.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -12,15 +12,16 @@ import Button from '@/components/Button/Button.vue'
 import type { ButtonInstance } from '@/components/Button/types'
 import Collapse from './components/Collapse/Collapse.vue';
 import Item from './components/Collapse/CollapseItem.vue';
+import Icon from './components/Icon/Icon.vue'
 
 const buttonRef = ref<ButtonInstance | null>(null);
 
 const openedValue = ref(['a']);
 
 onMounted(() => {
-  setTimeout(() => {
-    openedValue.value = ['a', 'b']
-  }, 2000);
+  // setTimeout(() => {
+  //   openedValue.value = ['a', 'b']
+  // }, 2000);
 })
 </script>
 
@@ -28,7 +29,8 @@ onMounted(() => {
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
   </header>
-
+  <Icon icon="arrow-down" size="2xl" type="danger" />
+  <Icon icon="arrow-up" size="2xl" type="primary" color="#0e7a0d" />
   <main>
     <Button ref="buttonRef">Test Button</Button>
     <Button plain>Plain Button</Button>
