@@ -2,32 +2,39 @@
  * @Author: 九日 mail@sumiler.com
  * @Date: 2024-01-29 16:35:27
  * @LastEditors: 九日 mail@sumiler.com
- * @LastEditTime: 2024-01-31 15:58:14
+ * @LastEditTime: 2024-02-03 00:22:37
  * @FilePath: \v-element\src\App.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import Tooltip from './components/Tooltip/Tooltip.vue'
 import Button from '@/components/Button/Button.vue'
 import type { ButtonInstance } from '@/components/Button/types'
 import Collapse from './components/Collapse/Collapse.vue';
 import Item from './components/Collapse/CollapseItem.vue';
 import Icon from './components/Icon/Icon.vue'
+import type { TooltipInstance } from './components/Tooltip/types';
 
 const buttonRef = ref<ButtonInstance | null>(null);
+const tolltipRef = ref<TooltipInstance | null>(null);
+const trigger = ref<any>('click')
 
 const openedValue = ref(['a']);
 
 onMounted(() => {
-  // setTimeout(() => {
-  //   openedValue.value = ['a', 'b']
-  // }, 2000);
+
 })
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <Tooltip placement="right" :trigger="trigger" ref="tolltipRef" :open-delay="1000" :close-delay="1000">
+      <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+      <template #content>
+        <p>Hello Tooltip</p>
+      </template>
+    </Tooltip>
   </header>
   <Icon icon="arrow-down" size="2xl" type="danger" />
   <Icon icon="arrow-up" size="2xl" type="primary" color="#0e7a0d" />
