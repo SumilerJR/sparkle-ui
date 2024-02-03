@@ -7,9 +7,11 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, h } from 'vue';
 import Tooltip from './components/Tooltip/Tooltip.vue'
 import Button from '@/components/Button/Button.vue'
+import Dropdown from './components/Dropdown/Dropdown.vue';
+import type { MenuOption } from './components/Dropdown/types';
 import type { ButtonInstance } from '@/components/Button/types'
 import Collapse from './components/Collapse/Collapse.vue';
 import Item from './components/Collapse/CollapseItem.vue';
@@ -21,6 +23,12 @@ const tolltipRef = ref<TooltipInstance | null>(null);
 const trigger = ref<any>('click')
 
 const openedValue = ref(['a']);
+const options: MenuOption[] = [
+  { key: 1, label: h('b', 'this is bold') },
+  { key: 2, label: 'item2', disabled: true },
+  { key: 3, label: 'item3', divided: true },
+  { key: 4, label: 'item4' }
+]
 
 onMounted(() => {
 
@@ -35,6 +43,11 @@ onMounted(() => {
         <p>Hello Tooltip</p>
       </template>
     </Tooltip>
+
+    <Dropdown placement="bottom" :trigger="trigger" :menu-options="options">
+      <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+
+    </Dropdown>
   </header>
   <Icon icon="arrow-down" size="2xl" type="danger" />
   <Icon icon="arrow-up" size="2xl" type="primary" color="#0e7a0d" />
