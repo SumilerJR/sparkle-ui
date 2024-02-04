@@ -10,13 +10,17 @@
 import { ref, onMounted, h } from 'vue';
 import Tooltip from './components/Tooltip/Tooltip.vue'
 import Button from '@/components/Button/Button.vue'
-import Dropdown from './components/Dropdown/Dropdown.vue';
+import Dropdown from './components/Dropdown/Dropdown';
 import type { MenuOption } from './components/Dropdown/types';
 import type { ButtonInstance } from '@/components/Button/types'
 import Collapse from './components/Collapse/Collapse.vue';
 import Item from './components/Collapse/CollapseItem.vue';
 import Icon from './components/Icon/Icon.vue'
+import Message from './components/Message/Message.vue'
+import { createMessage } from './components/Message/method'
+
 import type { TooltipInstance } from './components/Tooltip/types';
+import { log } from 'console';
 
 const buttonRef = ref<ButtonInstance | null>(null);
 const tolltipRef = ref<TooltipInstance | null>(null);
@@ -31,11 +35,15 @@ const options: MenuOption[] = [
 ]
 
 onMounted(() => {
-
+  createMessage({ message: 'hello world', duration: 0, showClose: true })
+  createMessage({ message: 'hello world again', duration: 0, type: 'success', showClose: true })
+  createMessage({ message: 'hello world three', duration: 0, type: 'danger', showClose: true })
 })
 </script>
 
 <template>
+  <!-- <Message message="hello message" :duration="0" show-close></Message> -->
+
   <header>
     <Tooltip placement="right" :trigger="trigger" ref="tolltipRef" :open-delay="1000" :close-delay="1000">
       <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
@@ -44,9 +52,9 @@ onMounted(() => {
       </template>
     </Tooltip>
 
-    <Dropdown placement="bottom" :trigger="trigger" :menu-options="options">
+    <Dropdown placement="bottom" :trigger="trigger" :menu-options="options"
+      @visible-change="e => console.log('visible change', e)" @select="e => console.log('select', e)">
       <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
     </Dropdown>
   </header>
   <Icon icon="arrow-down" size="2xl" type="danger" />

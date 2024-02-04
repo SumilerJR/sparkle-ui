@@ -35,6 +35,10 @@ import type { TooltipProps, TooltipEmits, TooltipInstance } from './types';
 import { ref, reactive, watch, computed, onUnmounted } from 'vue';
 import useClickOutside from '../../hooks/useClickOutside'
 
+defineOptions({
+    name: "SmTooltip"
+})
+
 // 使用默认属性
 const props = withDefaults(defineProps<TooltipProps>(), {
     placement: 'bottom',

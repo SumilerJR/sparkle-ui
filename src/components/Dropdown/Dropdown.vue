@@ -36,6 +36,9 @@ import type { DropdownProps, DropdownInstance, DropdownEmits, MenuOption } from 
 import Tooltip from '../Tooltip/Tooltip.vue';
 import RenderVnode from '../Common/RenderVnode.ts'
 import type { TooltipInstance } from '../Tooltip/types';
+defineOptions({
+    name: "SmDropdown"
+})
 // 定义组件属性
 const props = withDefaults(defineProps<DropdownProps>(), {
     hideAfterClick: true,
@@ -65,7 +68,7 @@ const itemClick = (e: MenuOption) => {
 
 // 暴露组件实例方法
 defineExpose<DropdownInstance>({
-    show: tooltipRef.value?.show,
-    hide: tooltipRef.value?.hide,
+    show: () => tooltipRef.value?.show(),
+    hide: () => tooltipRef.value?.hide(),
 })
 </script>
