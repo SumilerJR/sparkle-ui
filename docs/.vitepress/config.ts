@@ -28,6 +28,7 @@ export default defineConfig({
       md.use(componentPreview);
     },
   },
+  base: ".",
   // srcDir: 'components',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
