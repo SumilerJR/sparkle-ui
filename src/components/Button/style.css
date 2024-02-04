@@ -107,6 +107,11 @@
     --sm-button-hover-bg-color: var(--sm-color-$(val));
     --sm-button-hover-border-color: var(--sm-color-$(val));
     --sm-button-active-text-color: var(--sm-color-white);
+
+    /* 漏掉的 */
+    --sm-button-disabled-text-color: var(--sm-color-$(val)-light-5);
+    --sm-button-disabled-bg-color: var(--sm-color-$(val)-light-9);
+    --sm-button-disabled-border-color: var(--sm-color-$(val)-light-8);
   }
 }
 .sm-button--large {

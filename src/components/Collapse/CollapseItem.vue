@@ -71,9 +71,3 @@ const transitionEvents: Record<string, (el: HTMLElement) => void> = {
     }
 }
 </script>
-
-<style>
-.sm-collapse-item__header {
-    font-size: 30px;
-}
-</style>

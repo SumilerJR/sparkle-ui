@@ -6,8 +6,8 @@ import { containerPreview, componentPreview } from '@vitepress-demo-preview/plug
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Awesome Project",
-  description: "A VitePress Site",
+  title: "Sparkle-UI",
+  description: "一个仿element-plus的ui组件库",
   vite: {
     // plugins: [
     //   VueMacros({ // 配置VueMacros：将原本的plugins放到VueMacros({})中
@@ -34,23 +34,17 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Blog', link: 'https://sumiler.com/' }
     ],
 
     sidebar: [
       {
-        text: 'Examples',
+        text: 'Basic 基础组件',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'Button 按钮', link: '/components/button' },
+          { text: 'Collapse 折叠面板', link: '/components/collapse' },
         ]
       },
-      {
-        text: 'Basic',
-        items: [
-          { text: 'Button', link: '/components/button' }
-        ]
-      }
     ],
 
     socialLinks: [
