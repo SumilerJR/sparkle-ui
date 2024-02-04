@@ -28,7 +28,7 @@ export default defineConfig({
       md.use(componentPreview);
     },
   },
-  base: ".",
+  base: "/v-element/",
   // srcDir: 'components',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
