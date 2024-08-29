@@ -2,12 +2,12 @@
  * @Author: Sumiler mail@sumiler.com
  * @Date: 2024-06-11 23:19:09
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-06-27 22:57:52
+ * @LastEditTime: 2024-08-27 23:14:02
  * @FilePath: \v-element\src\components\Input\types.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 export interface InputProps {
-    type: string;
+    type?: string;
     modelValue: string;
     size?: 'large' | 'small';
     disabled?: boolean;
@@ -29,5 +29,8 @@ export interface InputEmits {
     (e: 'focus', value: FocusEvent): void;
     (e: 'blur', value: FocusEvent): void;
     (e: 'clear'): void;
+}
 
+export interface InputInstance {
+    ref: HTMLInputElement | HTMLTextAreaElement;
 }

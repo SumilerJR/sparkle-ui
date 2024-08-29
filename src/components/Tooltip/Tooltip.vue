@@ -134,7 +134,10 @@ const togglePopper = () => {
 // 点击外部区域关闭悬浮框
 useClickOutside(popperContainerNode, () => {
     if (props.trigger === 'click' && isOpen.value && !props.manual) {
-        closeDebounce();
+        closeFinal();
+    }
+    if (isOpen.value) {
+        emits('click-outside', true);
     }
 })
 
