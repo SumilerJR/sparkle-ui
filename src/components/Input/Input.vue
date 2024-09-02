@@ -2,7 +2,7 @@
  * @Author: Sumiler mail@sumiler.com
  * @Date: 2024-06-11 23:19:03
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-06-27 23:18:59
+ * @LastEditTime: 2024-09-01 19:12:19
  * @FilePath: \v-element\src\components\Input\Input.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -61,10 +61,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, computed, useAttrs, nextTick } from 'vue';
+import { ref, watch, computed, useAttrs, nextTick, inject } from 'vue';
 import type { Ref } from 'vue';
 import type { InputProps, InputEmits } from './types';
 import Icon from '../Icon/Icon.vue';
+import { formItemContextKey } from '../Form/types';
 
 defineOptions({
     name: 'SmInput',
@@ -77,7 +78,15 @@ const innerValue = ref(props.modelValue);
 const isFocus = ref(false);
 const passwordVisible = ref(false);
 const inputRef = ref() as Ref<HTMLInputElement>;
+const formItemContext = inject(formItemContextKey);
 
+/**
+ * 执行校验
+ * @param trigger 
+ */
+const runValidation = (trigger?: string) => {
+    formItemContext?.validate(trigger).catch((e) => console.log(e.errors));
+}
 const showClear = computed(() =>
     props.clearable &&
     !props.disabled &&
@@ -100,9 +109,11 @@ const keepFocus = async () => {
 const handleInput = () => {
     emits('update:modelValue', innerValue.value);
     emits('input', innerValue.value);
+    runValidation('input');
 }
 const handleChange = () => {
-    emits('change', innerValue.value);
+    emits('change', innerValue.value); 
+    runValidation('change');
 }
 const handleFocus = (event: FocusEvent) => {
     isFocus.value = true;
@@ -111,6 +122,8 @@ const handleFocus = (event: FocusEvent) => {
 const handleBlur = (event: FocusEvent) => {
     isFocus.value = false;
     emits('blur', event);
+    // 在blur后进行验证
+    runValidation('blur');
 }
 const clear = () => {
     innerValue.value = '';
