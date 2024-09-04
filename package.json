@@ -1,19 +1,52 @@
 {
-  "name": "v-element",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@sumilerjr/sparkle-ui",
+  "version": "1.0.0",
+  "description": "Vue3 components library",
   "type": "module",
+  "author": "SumilerJR",
+  "license": "MIT",
+  "keywords": [
+    "Component",
+    "UI",
+    "Vue3"
+  ],
+  "homepage": "https://sumilerjr.github.io/sparkle-ui/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SumilerJR/sparkle-ui/"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": ["dist/es/index.css", "dist/umd/index.css"],
+  "main": "./dist/umd/sparkle-ui.umd.cjs",
+  "module": "./dist/es/sparkle-ui.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/es/sparkle-ui.js",
+      "require": "./dist/umd/sparkle-ui.umd.cjs",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
+    }
+  },
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build": "run-p build-es build-umd",
     "preview": "vite preview",
     "build-only": "vite build",
+    "build-umd": "vite build --config vite.umd.config.ts",
+    "build-es": "vite build --config vite.es.config.ts",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
@@ -21,6 +54,9 @@
     "@popperjs/core": "^2.11.8",
     "async-validator": "^4.2.5",
     "lodash-es": "^4.17.21",
+    "vue": "^3.3.11"
+  },
+  "peerDependencies": {
     "vue": "^3.3.11"
   },
   "devDependencies": {
@@ -50,6 +86,7 @@
     "typescript": "~5.3.0",
     "unplugin-vue-macros": "^2.7.10",
     "vite": "^5.0.10",
+    "vite-plugin-dts": "^4.1.0",
     "vitepress": "^1.0.0-rc.41",
     "vitest": "^1.2.2",
     "vue-tsc": "^1.8.25"

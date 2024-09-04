@@ -8,12 +8,12 @@ description: Collapse 组件的文档
 
 ## 基础用法
 使用 `type`、`plain`、`round` 和 `circle` 来定义按钮的样式。
-<preview path="../demo/collapse/Basic.vue" title="基础用法" description="Collapse 组件的基础用法"></preview>
+<preview path="../demo/Collapse/Basic.vue" title="基础用法" description="Collapse 组件的基础用法"></preview>
 
 ## 手风琴效果
 每次只能展开一个面板
 通过 accordion 属性来设置是否以手风琴模式显示。
-<preview path="../demo/collapse/Accordion.vue" title="基础用法" description="Collapse 组件的手风琴模式显示"></preview>
+<preview path="../demo/Collapse/Accordion.vue" title="基础用法" description="Collapse 组件的手风琴模式显示"></preview>
 
 
 ## Collapse Attributes [​](#collapse-attributes)
