@@ -12,7 +12,7 @@ hero:
       link: /get-started
     - theme: alt
       text: 个人博客
-      link: https://sumiler.com/#/
+      link: https://sumiler.com/
 
 features:
   - title: “全”
